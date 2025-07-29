@@ -1,68 +1,32 @@
 [
   {
-    "id": 1,
-    "title": "Laptop Pro",
-    "description": "Laptop de alto rendimiento para profesionales",
-    "code": "LP001",
-    "price": 1500,
-    "status": true,
-    "stock": 25,
-    "category": "Tecnología",
-    "thumbnails": [
-      "/images/laptop1.jpg",
-      "/images/laptop2.jpg"
-    ]
-  },
-  {
-    "id": 2,
-    "title": "Mouse Gamer",
-    "description": "Mouse ergonómico con RGB",
-    "code": "MG002",
-    "price": 75,
-    "status": true,
-    "stock": 150,
-    "category": "Accesorios",
-    "thumbnails": [
-      "/images/mouse1.jpg"
-    ]
-  },
-  {
-    "title": "Notebook Gamer",
-    "description": "8gb ram + 120gb ssd ",
-    "code": "NOT01",
-    "price": 1500,
-    "stock": 4,
-    "category": "Hardware",
-    "thumbnails": [
-      "/img/note01"
-    ],
-    "id": 1753745152633,
-    "status": true
-  },
-  {
-    "title": "alfajor",
-    "description": "alfajor",
-    "code": "AF01",
-    "price": 500,
-    "stock": 5,
-    "category": "comidas",
-    "thumbnails": [
-      "dsadas"
-    ],
-    "id": 1753745677258,
-    "status": true
-  },
-  {
     "title": "juanito",
     "description": "jan",
     "code": "J01",
     "price": 510,
     "stock": 5,
     "category": "jaun",
-    "thumbnails": [
-      "dasda"
-    ],
     "id": 1753746116626,
+    "status": true
+  },
+  {
+    "title": "Monitor Curvo 27 pulgadas",
+    "description": "Monitor ideal para gaming y productividad",
+    "code": "MC027",
+    "price": 350,
+    "stock": 50,
+    "category": "Monitores",
+    "id": 1753806571376,
+    "status": true
+  },
+  {
+    "title": "2222 Curvo 27 pulgadas",
+    "description": "Monitor ideal para gaming y productividad",
+    "code": "MC027",
+    "price": 350,
+    "stock": 50,
+    "category": "Monitores",
+    "id": 1753806581864,
     "status": true
   }
 ]

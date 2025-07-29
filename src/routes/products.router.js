@@ -33,9 +33,21 @@ router.get('/:pid', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const newProduct = req.body;
+        const { title, description, code, price, stock, category } = req.body;
+
+        // --- NUEVO: Bloque de validación en el servidor ---
+        if (!title || !description || !code || !price || !stock || !category) {
+            return res.status(400).json({ error: 'Todos los campos son obligatorios.' });
+        }
+
+        if (typeof price !== 'number' || typeof stock !== 'number') {
+            return res.status(400).json({ error: 'El precio y el stock deben ser valores numéricos.' });
+        }
+        // --- Fin del bloque de validación ---
+
+        const newProduct = { title, description, code, price, stock, category };
         await productManager.addProduct(newProduct);
-        // Usamos req.io para emitir el evento a todos los clientes
+        
         req.io.emit('updateProducts', await productManager.getProducts());
         res.status(201).json({ message: 'Producto agregado exitosamente' });
     } catch (error) {

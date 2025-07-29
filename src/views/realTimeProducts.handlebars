@@ -18,18 +18,8 @@
     <input type="number" id="price" placeholder="Precio" required>
     <input type="number" id="stock" placeholder="Stock" required>
     <input type="text" id="category" placeholder="Categoría" required>
-    <input type="text" id="thumbnails" placeholder="Rutas de imágenes (separadas por coma)">
     
     <button type="submit">Agregar Producto</button>
-</form>
-
-<hr>
-
-<h2>Eliminar Producto</h2>
-<form id="delete-product-form">
-    <input type="number" id="productId" placeholder="ID del producto a eliminar" required>
-    <button type="submit">Eliminar Producto</button>
-</form>
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="/js/realtime.js"></script>

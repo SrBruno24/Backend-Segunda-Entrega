@@ -104,3 +104,19 @@ button:hover, .button-link:hover {
 .product-item:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
+
+.delete-btn {
+    padding: 5px 10px;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: white;
+    background-color: #e74c3c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}

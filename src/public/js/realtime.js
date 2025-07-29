@@ -1,7 +1,6 @@
 const socket = io();
 const productsContainer = document.getElementById('products-container');
 const addForm = document.getElementById('add-product-form');
-const deleteForm = document.getElementById('delete-product-form');
 
 const renderProducts = (products) => {
     productsContainer.innerHTML = '';
@@ -21,6 +20,7 @@ const renderProducts = (products) => {
                 <p>Código: ${product.code} | Stock: ${product.stock} | Categoría: ${product.category}</p>
                 <p>Precio: $${product.price}</p>
             </div>
+            <button class="delete-btn" data-id="${product.id}">Eliminar</button>
         `;
         ul.appendChild(li);
     });
@@ -31,10 +31,26 @@ socket.on('updateProducts', (products) => {
     renderProducts(products);
 });
 
+productsContainer.addEventListener('click', (event) => {
+    if (event.target.classList.contains('delete-btn')) {
+        const productId = event.target.dataset.id;
+        socket.emit('deleteProduct', productId);
+        
+        Swal.fire({
+            icon: 'info',
+            title: 'Producto eliminado',
+            text: `Se envió la solicitud para eliminar el producto con ID ${productId}.`,
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+        });
+    }
+});
+
 addForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    const thumbnailsInput = document.getElementById('thumbnails').value;
     const newProduct = {
         title: document.getElementById('title').value,
         description: document.getElementById('description').value,
@@ -42,7 +58,6 @@ addForm.addEventListener('submit', (event) => {
         price: parseFloat(document.getElementById('price').value),
         stock: parseInt(document.getElementById('stock').value),
         category: document.getElementById('category').value,
-        thumbnails: thumbnailsInput ? thumbnailsInput.split(',').map(url => url.trim()) : []
     };
 
     if (!newProduct.title || !newProduct.description || !newProduct.code || isNaN(newProduct.price) || isNaN(newProduct.stock) || !newProduct.category) {
@@ -70,20 +85,6 @@ addForm.addEventListener('submit', (event) => {
 
 const priceInput = document.getElementById('price');
 const stockInput = document.getElementById('stock');
-const productIdInput = document.getElementById('productId');
 const filterNonNumericInput = (event) => { event.target.value = event.target.value.replace(/[^0-9]/g, ''); };
 priceInput.addEventListener('input', filterNonNumericInput);
 stockInput.addEventListener('input', filterNonNumericInput);
-productIdInput.addEventListener('input', filterNonNumericInput);
-
-deleteForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const productId = productIdInput.value;
-    if (!productId) {
-        Swal.fire({ icon: 'error', title: 'Error', text: 'Por favor, ingresá el ID de un producto.' });
-        return;
-    }
-    socket.emit('deleteProduct', productId);
-    Swal.fire({ icon: 'info', title: 'Producto eliminado', text: `Solicitud enviada para eliminar ID ${productId}.`, toast: true, position: 'top-end', showConfirmButton: false, timer: 3000 });
-    deleteForm.reset();
-});
