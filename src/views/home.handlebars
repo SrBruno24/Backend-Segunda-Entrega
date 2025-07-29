@@ -1,0 +1,18 @@
+<h1>Lista de Productos (Estática)</h1>
+
+<a href="/realtimeproducts" style="display: inline-block; margin-bottom: 20px; padding: 10px 15px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">
+    Ir a Productos en Tiempo Real ⚡
+</a>
+
+
+<ul class="product-list">
+    {{#if products}}
+        {{#each products}}
+        <li class="product-item">
+            <strong>{{this.title}}</strong> - Precio: ${{this.price}} (ID: {{this.id}})
+        </li>
+        {{/each}}
+    {{else}}
+        <p>No hay productos para mostrar.</p>
+    {{/if}}
+</ul>

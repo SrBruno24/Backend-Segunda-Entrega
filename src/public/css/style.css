@@ -1,0 +1,106 @@
+/* src/public/css/styles.css */
+
+:root {
+    --primary-color: #3498db;
+    --background-color: #f4f7f6;
+    --text-color: #333;
+    --container-bg: #ffffff;
+    --border-color: #e0e0e0;
+    --error-color: #e74c3c;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: var(--container-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+h1, h2 {
+    color: var(--text-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-top: 40px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[type="text"], input[type="number"] {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="text"]:focus, input[type="number"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+button, .button-link {
+    padding: 12px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+button:hover, .button-link:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.product-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.product-item {
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: box-shadow 0.2s;
+}
+
+.product-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
