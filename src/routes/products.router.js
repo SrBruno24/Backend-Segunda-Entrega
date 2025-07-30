@@ -35,7 +35,6 @@ router.post('/', async (req, res) => {
     try {
         const { title, description, code, price, stock, category } = req.body;
 
-        // --- NUEVO: Bloque de validación en el servidor ---
         if (!title || !description || !code || !price || !stock || !category) {
             return res.status(400).json({ error: 'Todos los campos son obligatorios.' });
         }
@@ -43,7 +42,6 @@ router.post('/', async (req, res) => {
         if (typeof price !== 'number' || typeof stock !== 'number') {
             return res.status(400).json({ error: 'El precio y el stock deben ser valores numéricos.' });
         }
-        // --- Fin del bloque de validación ---
 
         const newProduct = { title, description, code, price, stock, category };
         await productManager.addProduct(newProduct);
@@ -59,7 +57,6 @@ router.delete('/:pid', async (req, res) => {
     try {
         const { pid } = req.params;
         await productManager.deleteProduct(parseInt(pid));
-        // Usamos req.io para emitir el evento
         req.io.emit('updateProducts', await productManager.getProducts());
         res.status(200).json({ message: 'Producto eliminado exitosamente' });
     } catch (error) {

@@ -36,17 +36,15 @@ export class CartManager {
         const cartIndex = carts.findIndex(c => c.id === cartId);
 
         if (cartIndex === -1) {
-            return null; // Carrito no encontrado
+            return null;
         }
 
         const cart = carts[cartIndex];
         const productIndex = cart.products.findIndex(p => p.product === productId);
 
         if (productIndex !== -1) {
-            // Si el producto ya existe, incrementamos la cantidad
             cart.products[productIndex].quantity += 1;
         } else {
-            // Si no existe, lo agregamos
             cart.products.push({ product: productId, quantity: 1 });
         }
         
